@@ -226,11 +226,13 @@ public class SyllabusActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 mCurrentPage = position;
                 currentCalendars = calendarAdapter.getPagers();
-                if (currentCalendars.get(position % currentCalendars.size()) != null) {
-                    CalendarDate date = currentCalendars.get(position % currentCalendars.size()).getSeedDate();
-                    currentDate = date;
+                Calendar currentCalendar = currentCalendars.get(position % currentCalendars.size());
+                if (currentCalendar != null) {
+                    CalendarDate date = currentCalendar.getSeedDate();
+                    currentDate = new CalendarDate(date.year,date.month,1);
                     tvYear.setText(date.getYear() + "年");
                     tvMonth.setText(date.getMonth() + "");
+                    currentCalendar.selectDefaultDate();
                 }
             }
 

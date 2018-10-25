@@ -314,4 +314,11 @@ public class CalendarRenderer {
     public void setDayRenderer(IDayRenderer dayRenderer) {
         this.dayRenderer = dayRenderer;
     }
+
+    public CalendarDate getDate(int row, int col) {
+        if (row >= 0 && row < weeks.length && col >= 0 && col < Const.TOTAL_COL) {
+            return weeks[row].days[col].getDate();
+        }
+        return null;
+    }
 }
